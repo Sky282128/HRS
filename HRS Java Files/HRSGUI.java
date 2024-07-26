@@ -3,18 +3,26 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class HRSGUI extends JFrame{
-    private JButton btnEnter;
+    JButton btn1;
+    JButton btn2;
+    JButton btn3;
+    JButton btn4;
+    JButton btn5;
+    JButton btn6;
+
     public HRSGUI(){
         super("HRS");
         setLayout(new BorderLayout());
 
-        setSize(500, 600);
+        setSize(500, 500);
+        setResizable(false);
         init();
 
         setVisible(true);
@@ -32,7 +40,41 @@ public class HRSGUI extends JFrame{
         panelNorth.add(lblHRS);
         this.add(panelNorth, BorderLayout.NORTH);
 
-        btnEnter = new JButton("Enter");
-        //panelNorth.add(btnAdd);
+        JPanel panelMiddle = new JPanel();
+        //JLabel lblHRS = new JLabel("Hotel Reservation System");
+        lblHRS.setForeground(Color.BLACK);
+        lblHRS.setFont(new Font("Roboto", Font.BOLD, 30));
+        btn1 = new JButton("Create Hotel");
+        btn1.setFont(new Font("Roboto", Font.PLAIN, 20));
+        btn2 = new JButton("Delete Hotel");
+        btn2.setFont(new Font("Roboto", Font.PLAIN, 20));
+        btn3 = new JButton("View Hotel");
+        btn3.setFont(new Font("Roboto", Font.PLAIN, 20));
+        btn4 = new JButton("Manage Hotel");
+        btn4.setFont(new Font("Roboto", Font.PLAIN, 20));
+        btn5 = new JButton("Make Booking");
+        btn5.setFont(new Font("Roboto", Font.PLAIN, 20));
+        btn6 = new JButton("Quit Program");
+        btn6.setFont(new Font("Roboto", Font.PLAIN, 20));
+        this.add(panelMiddle, FlowLayout.CENTER);
+        panelMiddle.add(btn1);
+        panelMiddle.add(btn2);
+        panelMiddle.add(btn3);
+        panelMiddle.add(btn4);
+        panelMiddle.add(btn5);
+        panelMiddle.add(btn6);
+    }
+
+    public void setActionListener(ActionListener listener) {
+        btn1.addActionListener(listener);
+        btn2.addActionListener(listener);
+        btn3.addActionListener(listener);
+        btn4.addActionListener(listener);
+        btn5.addActionListener(listener);
+        btn6.addActionListener(listener);
+    }
+
+    public void setDocumentListener(DocumentListener listener) {
+        //throw new UnsupportedOperationException("Not supported yet.");
     }
 }

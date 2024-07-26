@@ -12,6 +12,7 @@ public class HRS{
         Scanner doub = new Scanner(System.in);
         int action = -1;
         HRSGUI gui = new HRSGUI();
+        Controller controller =  new Controller(gui, HRS);
 
         System.out.println("Welcome to Aldrin's Hotel Reservation System!");
         
