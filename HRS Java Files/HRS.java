@@ -290,24 +290,47 @@ public class HRS{
                                     System.out.print("Input Y to confirm this change. Type any other character to cancel this change. ");
                                     char confirmChange = cha.next().charAt(0);
                                     if (confirmChange == 'Y' || confirmChange == 'y'){
+                                        int roomMark = hotelAddIn.getNumOfRooms();
+                                        Room[] roomList = hotelAddIn.getRoomList();
                                         switch (typeAdd) {
                                             case "Standard" -> {
                                                 for (i = 1; i <= roomsToAdd; i++){ //adds new Standard Rooms to the end of the roomList
-                                                    hotelAddIn.getRoomList()[hotelAddIn.getNumOfRooms()+i-1] = new Room(hotelAddIn.getRoomList()[hotelAddIn.getNumOfRooms()-1].getRoomNumber()+i, hotelAddIn.getBasePrice());
-                                                }   
+                                                    int latestRoom;
+                                                    if (roomMark == 0){
+                                                        latestRoom = 100;
+                                                    }
+                                                    else{
+                                                        latestRoom = roomList[roomMark-1].getRoomNumber();
+                                                    }
+                                                    roomList[roomMark+i-1] = new Room(latestRoom+i, hotelAddIn.getBasePrice());
+                                                }
                                                 hotelAddIn.setNumOfRooms(hotelAddIn.getNumOfRooms() + roomsToAdd);
                                                 System.out.println(roomsToAdd + " Standard Rooms have been added to " + hotelAddIn.getHotelName());
                                             }
                                             case "Deluxe" -> {
-                                                for (i = 1; i <= roomsToAdd; i++){ //adds new Deluxe Rooms to the end of the roomList
-                                                    hotelAddIn.getRoomList()[hotelAddIn.getNumOfRooms()+i-1] = new DeluxeRoom(hotelAddIn.getRoomList()[hotelAddIn.getNumOfRooms()-1].getRoomNumber()+i, hotelAddIn.getBasePrice());
+                                                for (i = 1; i <= roomsToAdd; i++){ //adds new Standard Rooms to the end of the roomList
+                                                    int latestRoom;
+                                                    if (roomMark == 0){
+                                                        latestRoom = 100;
+                                                    }
+                                                    else{
+                                                        latestRoom = roomList[roomMark-1].getRoomNumber();
+                                                    }
+                                                    roomList[roomMark+i-1] = new DeluxeRoom(latestRoom+i, hotelAddIn.getBasePrice());
                                                 }   
                                                 hotelAddIn.setNumOfRooms(hotelAddIn.getNumOfRooms() + roomsToAdd);
                                                 System.out.println(roomsToAdd + " Deluxe Rooms have been added to " + hotelAddIn.getHotelName());
                                             }
                                             case "Executive" -> {
-                                                for (i = 1; i <= roomsToAdd; i++){ //adds new Executive Rooms to the end of the roomList
-                                                    hotelAddIn.getRoomList()[hotelAddIn.getNumOfRooms()+i-1] = new ExecutiveRoom(hotelAddIn.getRoomList()[hotelAddIn.getNumOfRooms()-1].getRoomNumber()+i, hotelAddIn.getBasePrice());
+                                                for (i = 1; i <= roomsToAdd; i++){ //adds new Standard Rooms to the end of the roomList
+                                                    int latestRoom;
+                                                    if (roomMark == 0){
+                                                        latestRoom = 100;
+                                                    }
+                                                    else{
+                                                        latestRoom = roomList[roomMark-1].getRoomNumber();
+                                                    }
+                                                    roomList[roomMark+i-1] = new ExecutiveRoom(latestRoom+i, hotelAddIn.getBasePrice());
                                                 }   
                                                 hotelAddIn.setNumOfRooms(hotelAddIn.getNumOfRooms() + roomsToAdd);
                                                 System.out.println(roomsToAdd + " Executive Rooms have been added to " + hotelAddIn.getHotelName());

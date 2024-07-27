@@ -6,7 +6,7 @@ import javax.swing.event.DocumentListener;
 
 public class Controller implements ActionListener, DocumentListener{
     private HRSGUI gui;
-    private HRS hrs;
+    private Hotel hotel;
 
     public Controller(HRSGUI gui, HRS hrs){
         this.gui = gui;

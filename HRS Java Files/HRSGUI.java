@@ -15,7 +15,7 @@ public class HRSGUI extends JFrame{
     JButton btn4;
     JButton btn5;
     JButton btn6;
-
+    
     public HRSGUI(){
         super("HRS");
         setLayout(new BorderLayout());

@@ -24,6 +24,8 @@ public class Hotel{
         this.numOfRooms = 0;
         this.priceRates = new double[31];
 
+        roomList[0] = new Room(0, 0);
+
         for (x = 0; x < 31; x++){
             priceRates[x] = 1.00f;
         }
