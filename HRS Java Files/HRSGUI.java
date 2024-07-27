@@ -3,7 +3,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -64,7 +63,7 @@ public class HRSGUI extends JFrame{
         panelMiddle.add(btn5);
         panelMiddle.add(btn6);
     }
-
+/* 
     public void setActionListener(ActionListener listener) {
         btn1.addActionListener(listener);
         btn2.addActionListener(listener);
@@ -73,8 +72,9 @@ public class HRSGUI extends JFrame{
         btn5.addActionListener(listener);
         btn6.addActionListener(listener);
     }
-
+ 
     public void setDocumentListener(DocumentListener listener) {
         //throw new UnsupportedOperationException("Not supported yet.");
     }
+*/
 }

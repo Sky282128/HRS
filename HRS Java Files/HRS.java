@@ -12,7 +12,7 @@ public class HRS{
         Scanner doub = new Scanner(System.in);
         int action = -1;
         HRSGUI gui = new HRSGUI();
-        Controller controller =  new Controller(gui, HRS);
+        //Controller controller =  new Controller(gui, HRS);
 
         System.out.println("Welcome to Aldrin's Hotel Reservation System!");
         
@@ -271,7 +271,6 @@ public class HRS{
                                     else{
                                         System.out.println(replaceName + " cannot be used, as it is already the name of another existing hotel.");
                                     }
-                                    //System.out.println("");
                                 }
                                 case 2 -> { //Add Rooms UI
                                     Hotel hotelAddIn = hotelList.get(manageIndex);
@@ -293,21 +292,21 @@ public class HRS{
                                     if (confirmChange == 'Y' || confirmChange == 'y'){
                                         switch (typeAdd) {
                                             case "Standard" -> {
-                                                for (i = 1; i <= roomsToAdd; i++){ //adds new rooms to the end of the roomList
+                                                for (i = 1; i <= roomsToAdd; i++){ //adds new Standard Rooms to the end of the roomList
                                                     hotelAddIn.getRoomList()[hotelAddIn.getNumOfRooms()+i-1] = new Room(hotelAddIn.getRoomList()[hotelAddIn.getNumOfRooms()-1].getRoomNumber()+i, hotelAddIn.getBasePrice());
                                                 }   
                                                 hotelAddIn.setNumOfRooms(hotelAddIn.getNumOfRooms() + roomsToAdd);
                                                 System.out.println(roomsToAdd + " Standard Rooms have been added to " + hotelAddIn.getHotelName());
                                             }
                                             case "Deluxe" -> {
-                                                for (i = 1; i <= roomsToAdd; i++){ //adds new rooms to the end of the roomList
+                                                for (i = 1; i <= roomsToAdd; i++){ //adds new Deluxe Rooms to the end of the roomList
                                                     hotelAddIn.getRoomList()[hotelAddIn.getNumOfRooms()+i-1] = new DeluxeRoom(hotelAddIn.getRoomList()[hotelAddIn.getNumOfRooms()-1].getRoomNumber()+i, hotelAddIn.getBasePrice());
                                                 }   
                                                 hotelAddIn.setNumOfRooms(hotelAddIn.getNumOfRooms() + roomsToAdd);
                                                 System.out.println(roomsToAdd + " Deluxe Rooms have been added to " + hotelAddIn.getHotelName());
                                             }
                                             case "Executive" -> {
-                                                for (i = 1; i <= roomsToAdd; i++){ //adds new rooms to the end of the roomList
+                                                for (i = 1; i <= roomsToAdd; i++){ //adds new Executive Rooms to the end of the roomList
                                                     hotelAddIn.getRoomList()[hotelAddIn.getNumOfRooms()+i-1] = new ExecutiveRoom(hotelAddIn.getRoomList()[hotelAddIn.getNumOfRooms()-1].getRoomNumber()+i, hotelAddIn.getBasePrice());
                                                 }   
                                                 hotelAddIn.setNumOfRooms(hotelAddIn.getNumOfRooms() + roomsToAdd);
@@ -318,7 +317,6 @@ public class HRS{
                                     else{
                                         System.out.print(" was cancelled." + "Attempt to add rooms to " + hotelList.get(manageIndex).getHotelName());
                                     }
-                                    //System.out.println("");
                                 }
                                 case 3 -> { //Delete a Room UI
                                     Hotel hotelDelIn = hotelList.get(manageIndex);
@@ -359,7 +357,6 @@ public class HRS{
                                     else{
                                         System.out.println("There are no rooms available to delete.");
                                     }
-                                    //System.out.println("");
                                 }
                                 case 4 -> { //Update Base Price UI
                                     Hotel priceHotel = hotelList.get(manageIndex);
@@ -391,7 +388,6 @@ public class HRS{
                                     else{
                                         System.out.println("You cannot change the base price of this hotel becaue it has at least one active reservation.");
                                     }
-                                    //System.out.println("");
                                 }
                                 case 5 -> { //Remove Reservation UI
                                     ArrayList<Reservation> hotelResList = hotelList.get(manageIndex).getReserveList();
@@ -432,7 +428,7 @@ public class HRS{
                                 }
                                 case 6 -> { //Date Price Modifier
                                     Hotel rateHotel = hotelList.get(manageIndex);
-                                    if (rateHotel.getReserveList().isEmpty()){
+                                    if (rateHotel.getReserveList().isEmpty()){ //Allows the user to input their desired date to modify if there are no active reservations
                                         System.out.println("Input day in July to modify price rate: ");
                                         int dayRate = act.nextInt();
                                         System.out.println("Current Price Rate for July " + dayRate + ", 2024: " + rateHotel.getPriceRates()[dayRate-1]);
@@ -440,7 +436,7 @@ public class HRS{
                                         while(newRate < 0.50f || newRate > 1.50f){
                                             System.out.println("Input new Price Rate (between 0.50 and 1.50): ");
                                             newRate = doub.nextDouble();
-                                        }
+                                        } //Gives the user the option to change the price for the date that they chose
                                         System.out.println("Input Y to confirm this change. Type any other character to cancel this change. ");
                                         char confirmChange = cha.next().charAt(0);
                                         if (confirmChange == 'Y' || confirmChange == 'y'){
@@ -454,7 +450,6 @@ public class HRS{
                                     else{
                                         System.out.println("You cannot change the price of the dates of this hotel becaue it has at least one active reservation.");
                                     }
-                                    //System.out.println("");
                                 }
                             }
                         }
@@ -506,7 +501,7 @@ public class HRS{
                             String nameGuest = str.nextLine();
                             double totalCost = 0;
                             int roomType = 0;
-                            while (roomType < 1 || roomType > 3){
+                            while (roomType < 1 || roomType > 3){ //Allows the user to select the kind of room they want
                                 System.out.println("What kind of Room do you want? ");
                                 System.out.println("[1]Standard\t [2]Deluxe\t [3]Executive");
                                 roomType = act.nextInt();
@@ -514,8 +509,8 @@ public class HRS{
                             Room roomBook = null;
                             int freeCount = 0;
                             switch (roomType) {
-                                case 1 -> {
-                                    for (int i = 0; i < hotelBook.getNumOfRooms() && roomBook == null; i++) { //finds the first available room in the Hotel
+                                case 1 -> { //for picking a Standard Room
+                                    for (int i = 0; i < hotelBook.getNumOfRooms() && roomBook == null; i++) { //finds the first available Standard Room in the Hotel
                                         if (roomListBook[i].getDaysOccupied().isEmpty() && !(roomListBook[i] instanceof DeluxeRoom) && !(roomListBook[i] instanceof ExecutiveRoom)){ //works if there are no reservations in the Hotel
                                             for (int n = checkInDay; n <= checkOutDay-1; n++){
                                                 roomListBook[i].getDaysOccupied().add(n);
@@ -537,15 +532,15 @@ public class HRS{
                                         }
                                     }
                                 }
-                                case 2 -> {
-                                    for (int i = 0; i < hotelBook.getNumOfRooms() && roomBook == null; i++) { //finds the first available room in the Hotel
+                                case 2 -> { //for picking a Deluxe Room
+                                    for (int i = 0; i < hotelBook.getNumOfRooms() && roomBook == null; i++) { //finds the first available Deluxe Room in the Hotel
                                         if (roomListBook[i].getDaysOccupied().isEmpty() && (roomListBook[i] instanceof DeluxeRoom)){ //works if there are no reservations in the Hotel
                                             for (int n = checkInDay; n <= checkOutDay-1; n++){
                                                 roomListBook[i].getDaysOccupied().add(n);
                                             }
                                             roomBook = roomListBook[i];
                                         }
-                                        else{ //finds a Room that is not connected to any existing Reservation
+                                        else{ //finds a Deluxe Room that is not connected to any existing Reservation
                                             for (int j = 0; j < roomListBook[i].getDaysOccupied().size(); j++){
                                                 if (roomListBook[i].getDaysOccupied().get(j) < checkInDay && roomListBook[i].getDaysOccupied().get(j) >= checkOutDay && (roomListBook[i] instanceof DeluxeRoom)){
                                                     freeCount++;
@@ -560,15 +555,15 @@ public class HRS{
                                         }
                                     }
                                 }
-                                case 3 -> {
-                                    for (int i = 0; i < hotelBook.getNumOfRooms() && roomBook == null; i++) { //finds the first available room in the Hotel
+                                case 3 -> { //for picking an Executive Room
+                                    for (int i = 0; i < hotelBook.getNumOfRooms() && roomBook == null; i++) { //finds the first available Executive Room in the Hotel
                                         if (roomListBook[i].getDaysOccupied().isEmpty() && (roomListBook[i] instanceof ExecutiveRoom)){ //works if there are no reservations in the Hotel
                                             for (int n = checkInDay; n <= checkOutDay-1; n++){
                                                 roomListBook[i].getDaysOccupied().add(n);
                                             }
                                             roomBook = roomListBook[i];
                                         }
-                                        else{ //finds a Room that is not connected to any existing Reservation
+                                        else{ //finds an Executive Room that is not connected to any existing Reservation
                                             for (int j = 0; j < roomListBook[i].getDaysOccupied().size(); j++){
                                                 if (roomListBook[i].getDaysOccupied().get(j) < checkInDay && roomListBook[i].getDaysOccupied().get(j) >= checkOutDay && (roomListBook[i] instanceof ExecutiveRoom)){
                                                     freeCount++;
@@ -584,26 +579,26 @@ public class HRS{
                                     }
                                 }
                             }
-                            for (int i = checkInDay; i < checkOutDay; i++){
+                            for (int i = checkInDay; i < checkOutDay; i++){ //calculates the total Reservation price by getting the summation of the product of the price per day by the day's price rate
                                 totalCost += roomBook.getPrice()*hotelBook.getPriceRates()[i];
                             }
-                            System.out.println("Would you like to input a discount code? Write Y for yes. Type any other character to decline. ");
-                            char addCode = cha.next().charAt(0);
-                            if (addCode == 'Y' || addCode == 'y'){ //removes the contents of daysOccupied for the afected Room
+                            System.out.println("Would you like to input a discount code? Write Y for yes. Type any other character to decline. "); 
+                            char addCode = cha.next().charAt(0); //gives the user the option to input a discount code
+                            if (addCode == 'Y' || addCode == 'y'){ 
                                 int codeFound = -1;
                                 String code = "";
                                 while (codeFound != 1){
-                                    System.out.println("Input Discount Code: ");
+                                    System.out.println("Input Discount Code: "); //Makes the user input a discount code; keeps looping until user inputs one of the 3 available codes
                                     code = str.nextLine();
                                     if (code.equals("I_WORK_HERE") || code.equals("STAY4_GET1") || code.equals("PAYDAY"))
                                         codeFound = 1;  
                                 }
-                                if (code.equals("I_WORK_HERE")){
+                                if (code.equals("I_WORK_HERE")){ //Reduces the total price by 10%
                                     totalCost *= 0.90;
                                     System.out.println("The price of your reservation has been reduced by 10%.");
                                 }
                                     
-                                else if (code.equals("STAY4_GET1")){
+                                else if (code.equals("STAY4_GET1")){ //Excludes the first day from the total price if the Reservation covers at least 5 days
                                     if (dateOut.getDay()-dateIn.getDay() >= 5){
                                         totalCost -= hotelList.get(hotelResIndex).getBasePrice();
                                         System.out.println("The first day of your reservation was excluded from its total price.");
@@ -611,7 +606,7 @@ public class HRS{
                                     else
                                         System.out.println("Discount code failed. Your reservation does not contain 5 or more days.");
                                 }
-                                else if (code.equals("PAYDAY")){
+                                else if (code.equals("PAYDAY")){ //Reduces the total price by 7% if the reservation covers either day 15 or 30 (but not as the check-out day)
                                     int foundIndex = -1;
                                     for (int i = 0; i < roomBook.getDaysOccupied().size(); i++){
                                         if (roomBook.getDaysOccupied().get(i) == 15 || roomBook.getDaysOccupied().get(i) == 30)
@@ -645,7 +640,7 @@ public class HRS{
             }
             System.out.println("");
         }
-
+        //This marks the closing of the program
         System.out.println("Thank you for using Aldrin's Hotel Reservation System!");
         System.out.println("Have a great day!");
     }

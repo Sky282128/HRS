@@ -31,7 +31,10 @@ public class Hotel{
     /**
      * Initializes a Hotel object with the name of the Hotel and the number of rooms in the Hotel
      * @param hotelName name of the Hotel
-     * @param numOfRooms name of the Hotel
+     * @param numOfRooms total number of Rooms in the Hotel
+     * @param standardRooms number of Standard Rooms the Hotel
+     * @param deluxeRooms number of Deluxe Rooms the Hotel
+     * @param executiveRooms number of Executive Rooms the Hotel
      */
     public Hotel(String hotelName, int numOfRooms, int standardRooms, int deluxeRooms, int executiveRooms) {
         int i, j = 0;
@@ -144,11 +147,17 @@ public class Hotel{
     public void setNumOfRooms(int numOfRooms) {
         this.numOfRooms = numOfRooms;
     }
-
+    /**
+     * Returns the list of price rates for each day of the month
+     * @return priceRates 
+     */
     public double[] getPriceRates() {
         return priceRates;
     }
-
+    /**
+     * Sets a new double array for priceRates
+     * @param priceRates new array for priceRates 
+     */
     public void setPriceRates(double[] priceRates) {
         this.priceRates = priceRates;
     }
