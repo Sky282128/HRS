@@ -32,7 +32,9 @@ public class HRSGUI extends JFrame{
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
-
+    /**
+     * Creates the design elements for the GUI
+     */
     private void init(){
         JPanel panelNorth = new JPanel();
         panelNorth.setLayout(new FlowLayout());
