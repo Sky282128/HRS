@@ -11,12 +11,12 @@ import javax.swing.JPanel;
  * Contains the GUI for the HRS
 */
 public class HRSGUI extends JFrame{
-    JButton btn1;
-    JButton btn2;
-    JButton btn3;
-    JButton btn4;
-    JButton btn5;
-    JButton btn6;
+    private JButton btn1;
+    privateJButton btn2;
+    privateJButton btn3;
+    private JButton btn4;
+    private JButton btn5;
+    private JButton btn6;
     /**
      * Iniializes the HRS GUI
      */
