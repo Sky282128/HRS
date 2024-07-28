@@ -1,13 +1,15 @@
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
+import static java.awt.FlowLayout.CENTER;
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
+/**
+ * Contains the GUI for the HRS
+*/
 public class HRSGUI extends JFrame{
     JButton btn1;
     JButton btn2;
@@ -15,7 +17,9 @@ public class HRSGUI extends JFrame{
     JButton btn4;
     JButton btn5;
     JButton btn6;
-    
+    /**
+     * Iniializes the HRS GUI
+     */
     public HRSGUI(){
         super("HRS");
         setLayout(new BorderLayout());
@@ -55,7 +59,7 @@ public class HRSGUI extends JFrame{
         btn5.setFont(new Font("Roboto", Font.PLAIN, 20));
         btn6 = new JButton("Quit Program");
         btn6.setFont(new Font("Roboto", Font.PLAIN, 20));
-        this.add(panelMiddle, FlowLayout.CENTER);
+        this.add(panelMiddle, CENTER);
         panelMiddle.add(btn1);
         panelMiddle.add(btn2);
         panelMiddle.add(btn3);

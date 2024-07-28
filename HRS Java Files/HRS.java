@@ -666,5 +666,9 @@ public class HRS{
         //This marks the closing of the program
         System.out.println("Thank you for using Aldrin's Hotel Reservation System!");
         System.out.println("Have a great day!");
+        act.close();
+        str.close();
+        cha.close();
+        doub.close();
     }
 }
