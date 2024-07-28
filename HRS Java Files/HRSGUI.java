@@ -12,8 +12,8 @@ import javax.swing.JPanel;
 */
 public class HRSGUI extends JFrame{
     private JButton btn1;
-    privateJButton btn2;
-    privateJButton btn3;
+    private JButton btn2;
+    private JButton btn3;
     private JButton btn4;
     private JButton btn5;
     private JButton btn6;
